@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="500px" height="500px" style="background-color: gainsboro;">
+			 您的浏览器不支持canvas，请换个浏览器
+		</canvas>
+	</body>
+		<script>
+			var canvas = document.getElementById('canvas'); //获取标签
+			var cc = canvas.getContext("2d");
+			
+			var px=0;
+			var py=0;
+			var bs=false;
+			canvas.onmousedown=function(e){
+				bs=true;
+				px=e.clientX;
+				py=e.clientY;
+			}
+//			
+			canvas.onmousemove=function(e){
+				if(bs==true){
+					cc.moveTo(px,py);
+					var lx=e.clientX;
+					var ly=e.clientY;
+					cc.lineTo(lx,ly);
+					cc.stroke();
+					px=lx;
+					py=ly;
+				}
+			}
+			canvas.onmouseup=function(){
+				bs=false;
+			}
+		</script>
+</html>
